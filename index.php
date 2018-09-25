@@ -22,6 +22,21 @@
 	</div>
 	<div class="container">
 		<h2>Please register or login to view contents</h2>
+		<?php
+			require_once "vendor/autoload.php";
+			use GuzzleHttp\Client;
+			$client = new Client();
+			$res = $client->request('GET', 'https://www.gismeteo.ua/weather-zaporizhia-5093/', [
+				'headers' => ['User-Agent' => 'testing/1.0',
+							  'Accept'     => 'text/html']]
+			);
+			//echo $res->getStatusCode();
+			// 200
+			//echo $res->getHeaderLine('content-type');
+			// 'application/json; charset=utf8'
+			echo $res->getBody();
+			// '{"id": 1420053, "name": "guzzle", ...}'
+		?>
 </div>
   </body>
 </html>

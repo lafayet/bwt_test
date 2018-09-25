@@ -1,1 +1,1 @@
-# bwt_test
+This is my bwt homework
