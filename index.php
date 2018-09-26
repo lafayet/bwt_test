@@ -43,7 +43,7 @@
 				'enforceEncoding' => 'utf-8',
 			]);
 			$dom->load($test);
-			$contents = $dom->find('.content-border');
+			echo $dom->getElementById('weather');
 			//echo count($contents); // 10
 		?>
 </div>
