@@ -34,8 +34,17 @@
 			// 200
 			//echo $res->getHeaderLine('content-type');
 			// 'application/json; charset=utf8'
-			echo $res->getBody();
+			//echo $res->getBody();
 			// '{"id": 1420053, "name": "guzzle", ...}'
+			$test = (string)$res->getBody();
+			use PHPHtmlParser\Dom;
+			$dom = new Dom;
+			$dom->setOptions([
+				'enforceEncoding' => 'utf-8',
+			]);
+			$dom->load($test);
+			$contents = $dom->find('.content-border');
+			//echo count($contents); // 10
 		?>
 </div>
   </body>
