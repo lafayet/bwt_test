@@ -40,7 +40,37 @@ class Controller_Login extends Controller
 	
 	function action_register()
 	{
-		$data["login_status"] = "registering";
-		$this->view->generate('view_login.php', 'view_template.php', $data);
+		if(isset($_POST['login']) && isset($_POST['password']))
+		{
+			$login = $_POST['login'];
+			$password =$_POST['password'];
+			
+			if($login!="" && $password!="")
+			{
+				$my_hash = password_hash($password, PASSWORD_DEFAULT);
+				if (password_verify ($password , $my_hash))
+				{
+					echo 'pasword matches';
+				}
+				echo '<br>';
+				$mysqli = new mysqli("localhost", "root", "", "bwt"); //надо будет поменять
+				$resque = $mysqli->query("SELECT * FROM tags");
+				echo $resque->fetch_assoc()['tag'];
+				echo $resque->fetch_assoc()['tag'];
+				//sleep (10);
+				//header('Location:/bwt_test/login/');
+			}
+			else
+			{
+				$data["register_status"] = "wrong_credentials";
+				$data["login_status"] = "registering";
+			}
+		}
+		else
+		{
+			$data["login_status"] = "registering";
+			$this->view->generate('view_login.php', 'view_template.php', $data);
+		}
+		
 	}	
 }
