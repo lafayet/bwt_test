@@ -11,22 +11,23 @@ class Controller_Login extends Controller
 		{
 			$login = $_POST['login'];
 			$password =$_POST['password'];
+			$mysqli = new mysqli("localhost", "root", "", "bwt_test_db");
+			$resque = $mysqli->query('SELECT passwordhash FROM users WHERE login = "'.$login.'"');
+			//надо добавить проверку результата запроса на тип данных (может быть булевым)
+			$my_hash = $resque->fetch_assoc()['passwordhash'];
 			
-			/*
-			Производим аутентификацию, сравнивая полученные значения со значениями прописанными в коде.
-			Такое решение не верно с точки зрения безопсаности и сделано для упрощения примера.
-			Логин и пароль должны храниться в БД, причем пароль должен быть захеширован.
-			*/
-			if($login=="admin" && $password=="12345")
+			
+			if (password_verify ($password , $my_hash))
 			{
+				//echo 'pasword matches';
 				$data["login_status"] = "access_granted";
-				
-				session_start(); //echo $_SESSION['admin'];
+				session_start();
 				$_SESSION['admin'] = $password;
 				//header('Location:/bwt_test/admin/');
 			}
 			else
 			{
+				//echo "wrong password or login";
 				$data["login_status"] = "access_denied";
 			}
 		}
@@ -43,22 +44,28 @@ class Controller_Login extends Controller
 		if(isset($_POST['login']) && isset($_POST['password']))
 		{
 			$login = $_POST['login'];
-			$password =$_POST['password'];
+			$password = $_POST['password'];
+			$name = $_POST['name'];
+			$soname = $_POST['soname'];
+			$sex = $_POST['sex'];
+			$birthday = $_POST['birthday'];
+			$email = $_POST['email'];
 			
 			if($login!="" && $password!="")
 			{
+				/* Вот это все позже надо будет перетащить в модель */
 				$my_hash = password_hash($password, PASSWORD_DEFAULT);
-				if (password_verify ($password , $my_hash))
+				$mysqli = new mysqli("localhost", "root", "", "bwt_test_db");
+				$mysqli->query('SET NAMES UTF8');
+				if (!$mysqli->query("INSERT INTO users (Login, PasswordHash, Name, Soname, Email, Gender, DateOfBirth) VALUES ('".$login."', '".$my_hash."', '".$name."', '".$soname."', '".$email."', '".$sex."', '".$birthday."')"))
 				{
-					echo 'pasword matches';
+					echo "User already exists!";
+					echo '<a href="http://localhost/bwt_test/login/register">Назад</a>';
 				}
-				echo '<br>';
-				$mysqli = new mysqli("localhost", "root", "", "bwt"); //надо будет поменять
-				$resque = $mysqli->query("SELECT * FROM tags");
-				echo $resque->fetch_assoc()['tag'];
-				echo $resque->fetch_assoc()['tag'];
-				//sleep (10);
-				//header('Location:/bwt_test/login/');
+				else
+				{
+					header('Location:/bwt_test/login/');
+				}
 			}
 			else
 			{

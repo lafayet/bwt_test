@@ -60,11 +60,26 @@
 			<form action="" method="post">
 				Для регистрации заполните следующие поля:<br>
 				<br>
-				Логин: <br>
+				Логин:* <br>
 				<input type="text" name="login"> <br>
 				<br>
-				Пароль: <br>
+				Пароль:* <br>
 				<input type="password" name="password"> <br>
+				<br>
+				Имя:* <br>
+				<input type="text" name="name"> <br>
+				<br>
+				Фамилия:* <br>
+				<input type="text" name="soname"> <br>
+				<br>
+				E-Mail:* <br>
+				<input type="email" name="email"> <br>
+				<br>
+				Пол: <br>
+				<input type="text" name="sex"> <br>
+				<br>
+				День рождения: <br>
+				<input type="date" name="birthday"> <br>
 				<br>
 				<input type="submit" value="Зарегистрироваться" name="btn"
 				style="width: 150px; height: 30px;">
