@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2018 at 02:27 PM
+-- Generation Time: Oct 03, 2018 at 03:19 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -33,6 +33,14 @@ CREATE TABLE `feedbacks` (
   `UserId` int(11) NOT NULL COMMENT 'Id of user which this feedback is',
   `Message` varchar(500) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Feedback message'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `feedbacks`
+--
+
+INSERT INTO `feedbacks` (`Id`, `UserId`, `Message`) VALUES
+(1, 2, 'Вместо погоды показывают  какую-то фигню...'),
+(2, 2, 'А что, админы не отвечают?');
 
 -- --------------------------------------------------------
 
@@ -67,7 +75,8 @@ INSERT INTO `users` (`Id`, `Login`, `PasswordHash`, `Name`, `Soname`, `Email`, `
 -- Indexes for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `FOREIGN` (`UserId`);
 
 --
 -- Indexes for table `users`
@@ -84,13 +93,23 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Feedback Id';
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Feedback Id', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Account id', AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `feedbacks`
+--
+ALTER TABLE `feedbacks`
+  ADD CONSTRAINT `feedbacks_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
