@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2018 at 07:59 PM
+-- Generation Time: Oct 03, 2018 at 02:27 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `feedbacks` (
   `Id` int(11) NOT NULL COMMENT 'Feedback Id',
   `UserId` int(11) NOT NULL COMMENT 'Id of user which this feedback is',
-  `Message` varchar(500) COLLATE cp1251_general_cs NOT NULL COMMENT 'Feedback message'
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_general_cs;
+  `Message` varchar(500) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Feedback message'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -42,13 +42,22 @@ CREATE TABLE `feedbacks` (
 
 CREATE TABLE `users` (
   `Id` int(11) NOT NULL COMMENT 'Account id',
-  `Name` varchar(30) COLLATE cp1251_general_cs NOT NULL COMMENT 'User name',
-  `Soname` varchar(30) COLLATE cp1251_general_cs NOT NULL COMMENT 'User soname',
-  `PasswordHash` varchar(250) COLLATE cp1251_general_cs NOT NULL,
-  `Email` varchar(50) COLLATE cp1251_general_cs NOT NULL COMMENT 'User e-mail',
-  `Gender` char(1) COLLATE cp1251_general_cs DEFAULT NULL COMMENT 'User gender',
+  `Login` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `PasswordHash` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `Name` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User name',
+  `Soname` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User soname',
+  `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User e-mail',
+  `Gender` char(1) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'User gender',
   `DateOfBirth` date DEFAULT NULL COMMENT 'User date of birth'
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_general_cs;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`Id`, `Login`, `PasswordHash`, `Name`, `Soname`, `Email`, `Gender`, `DateOfBirth`) VALUES
+(1, 'Admin', '$2y$10$SkAqZWOse2RjfpYUBvrUOOOdQhn4VGMOLlk1koN.SHshjeMa21Cvu', 'Di', 'Metri', 'di.metri@gmail.com', 'm', '1993-02-08'),
+(2, 'Tester', '$2y$10$SFF8YCKHTet7klLKCtgPfe.YBucfp.CtDSFNnZCjHTVe6meL1S7MS', 'Тостер', 'Хлостер', 'biba@byak.com', 'm', '2018-07-11');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +73,8 @@ ALTER TABLE `feedbacks`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`Id`),
+  ADD UNIQUE KEY `Login` (`Login`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -80,7 +90,7 @@ ALTER TABLE `feedbacks`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Account id';
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Account id', AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
