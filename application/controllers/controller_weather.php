@@ -5,8 +5,16 @@ class Controller_Weather extends Controller
 
 	function __construct()
 	{
-		$this->model = new Model_Weather();
-		$this->view = new View();
+		session_start();
+		if (isset($_SESSION['uid']))
+		{
+			$this->model = new Model_Weather();
+			$this->view = new View();		
+		}
+		else
+		{
+			header('Location:/bwt_test/login/');
+		}
 	}
 	
 	function action_index()

@@ -3,31 +3,23 @@
 class Controller_Login extends Controller
 {
 	
+	function __construct()
+	{
+		$this->model = new Model_Login();
+		$this->view = new View();
+	}	
+	
 	function action_index()
 	{
-		//$data["login_status"] = "";
-
 		if(isset($_POST['login']) && isset($_POST['password']))
 		{
-			$login = $_POST['login'];
-			$password =$_POST['password'];
-			$mysqli = new mysqli("localhost", "root", "", "bwt_test_db");
-			$resque = $mysqli->query('SELECT passwordhash FROM users WHERE login = "'.$login.'"');
-			//надо добавить проверку результата запроса на тип данных (может быть булевым)
-			$my_hash = $resque->fetch_assoc()['passwordhash'];
-			
-			
-			if (password_verify ($password , $my_hash))
+			if ($this->model->login($_POST['login'], $_POST['password']))
 			{
-				//echo 'pasword matches';
 				$data["login_status"] = "access_granted";
-				session_start();
-				$_SESSION['admin'] = $password;
 				//header('Location:/bwt_test/admin/');
 			}
 			else
 			{
-				//echo "wrong password or login";
 				$data["login_status"] = "access_denied";
 			}
 		}
@@ -53,11 +45,8 @@ class Controller_Login extends Controller
 			
 			if($login!="" && $password!="")
 			{
-				/* Вот это все позже надо будет перетащить в модель */
-				$my_hash = password_hash($password, PASSWORD_DEFAULT);
-				$mysqli = new mysqli("localhost", "root", "", "bwt_test_db");
-				$mysqli->query('SET NAMES UTF8');
-				if (!$mysqli->query("INSERT INTO users (Login, PasswordHash, Name, Soname, Email, Gender, DateOfBirth) VALUES ('".$login."', '".$my_hash."', '".$name."', '".$soname."', '".$email."', '".$sex."', '".$birthday."')"))
+				
+				if (!$this->model->register($login, $password, $name, $soname, $sex, $birthday, $email))
 				{
 					echo "User already exists!";
 					echo '<a href="http://localhost/bwt_test/login/register">Назад</a>';
