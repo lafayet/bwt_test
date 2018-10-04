@@ -27,9 +27,9 @@
 		<div class="col-md-12">
 			<br>
 			<ul>
-				<li><a href="weather">Просмотреть погоду</a></li>
-				<li><a href="feedbacks">Просмотреть отзывы</a></li>
-				<li><a href="feedback">Оставить отзыв</a></li>
+				<li><a href="http:\\localhost\bwt_test\weather">Просмотреть погоду</a></li>
+				<li><a href="http:\\localhost\bwt_test\feedbacks">Просмотреть отзывы</a></li>
+				<li><a href="http:\\localhost\bwt_test\feedback">Оставить отзыв</a></li>
 			</ul>
 		</div>	
 	</div>	

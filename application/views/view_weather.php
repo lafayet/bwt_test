@@ -1,15 +1,14 @@
-<h1>Погода</h1>
-<p>
-<table>
-Все проекты в следующей таблице являются вымышленными, поэтому даже не пытайтесь перейти по приведенным ссылкам.
-<tr><td>Год</td><td>Проект</td><td>Описание</td></tr>
-<?php
-
-	foreach($data as $row)
-	{
-		echo '<tr><td>'.$row['Year'].'</td><td>'.$row['Site'].'</td><td>'.$row['Description'].'</td></tr>';
-	}
-	
-?>
-</table>
-</p>
+<div class = "container border-container">
+	<div class = "row weather-row">
+		<div class="col-md-12">
+		<h1>ПОГОДА В ЗАПОРОЖЬЕ</h1><br>
+		<?php
+			echo $data['cloudness'];
+			echo $data['cloudness_w'];
+			echo '<br>';
+			echo $data['temperature'];
+			echo '<br>';
+		?>
+		</div>
+	</row>
+</div>
