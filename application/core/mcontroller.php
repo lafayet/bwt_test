@@ -1,14 +1,15 @@
 <?php
 
-class Controller {
+class MController {
 	
 	public $model;
 	public $view;
 	
-	function __construct()
+	function __construct($model_class)
 	{
 		session_start();
 		if (isset($_SESSION['uid'])) {
+			$this->model = new $model_class();
 			$this->view = new View();
 		}
 		else
