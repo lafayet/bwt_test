@@ -10,7 +10,7 @@
 			echo '<br>';
 			echo $data['weather'];
 			echo '<br>';
-			echo '<a href="http://localhost/bwt_test/weather">Вернуться</a><br><br>';
+			echo '<a href="http://localhost/bwt_test/main">Вернуться</a><br><br>';
 		?>
 		</div>
 	</row>

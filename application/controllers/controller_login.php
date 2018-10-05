@@ -2,12 +2,18 @@
 
 class Controller_Login extends Controller
 {
-	
 	function __construct()
 	{
-		$this->model = new Model_Login();
-		$this->view = new View();
-	}	
+		session_start();
+		if (!isset($_SESSION['uid'])) {
+			$this->model = new Model_Login();
+			$this->view = new View();
+		}
+		else
+		{
+			header('Location:/bwt_test/main/');
+		}
+	}
 	
 	function action_index()
 	{
@@ -15,8 +21,7 @@ class Controller_Login extends Controller
 		{
 			if ($this->model->login($_POST['login'], $_POST['password']))
 			{
-				$data["login_status"] = "access_granted";
-				//header('Location:/bwt_test/admin/');
+				header('Location:/bwt_test/main/');
 			}
 			else
 			{
@@ -46,7 +51,7 @@ class Controller_Login extends Controller
 			if($login!="" && $password!="")
 			{
 				
-				if (!$this->model->register($login, $password, $name, $soname, $sex, $birthday, $email))
+				if (!$this->model->register($login, $password, $name, $soname, $email, $sex, $birthday, $email))
 				{
 					echo "User already exists!";
 					echo '<a href="http://localhost/bwt_test/login/register">Назад</a>';
