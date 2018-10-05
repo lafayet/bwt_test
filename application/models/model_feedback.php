@@ -2,9 +2,24 @@
 
 class Model_Feedback extends Model
 {
-	public function get_data()
+	public function set_data($name, $email, $feedback)
 	{	
-		$data = "feedback";
-		return $data;
+		$pdo = new PDO('mysql:host=localhost;dbname=bwt_test_db', 'root', '');
+		$pdo->query('SET NAMES UTF8');
+		$prep_req = $pdo->prepare('INSERT INTO feedbacks2 (name, email, message)
+		VALUES (:name, :email, :message)');
+		if (
+			!$prep_req->execute(array(
+			':name' => $name,
+			':email' => $email,
+			':message' => $feedback,))
+			)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 }
