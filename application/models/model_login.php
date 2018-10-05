@@ -4,10 +4,11 @@ class Model_Login extends Model
 {
 	public function login($login, $password)
 	{
-		$mysqli = new mysqli("localhost", "root", "", "bwt_test_db");
-		$resque = $mysqli->query('SELECT passwordhash FROM users WHERE login = "'.$login.'"');
-		//надо добавить проверку результата запроса на тип данных (может быть булевым)
-		$my_hash = $resque->fetch_assoc()['passwordhash'];
+		$pdo = new PDO('mysql:host=localhost;dbname=bwt_test_db', 'root', '');
+		$prep_req = $pdo->prepare('SELECT passwordhash FROM users WHERE login = :login');
+		$prep_req->bindParam(':login', $login);
+		$prep_req->execute();
+		$my_hash = $prep_req->fetchColumn();
 		
 		
 		if (password_verify ($password , $my_hash))
@@ -25,9 +26,20 @@ class Model_Login extends Model
 	public function register($login, $password, $name, $soname, $email, $sex = "NULL", $birthday = "NULL")
 	{
 		$my_hash = password_hash($password, PASSWORD_DEFAULT);
-		$mysqli = new mysqli("localhost", "root", "", "bwt_test_db");
-		$mysqli->query('SET NAMES UTF8');
-		if (!$mysqli->query("INSERT INTO users (Login, PasswordHash, Name, Soname, Email, Gender, DateOfBirth) VALUES ('".$login."', '".$my_hash."', '".$name."', '".$soname."', '".$email."', '".$sex."', '".$birthday."')"))
+		$pdo = new PDO('mysql:host=localhost;dbname=bwt_test_db', 'root', '');
+		$pdo->query('SET NAMES UTF8');
+		$prep_req = $pdo->prepare('INSERT INTO users (Login, PasswordHash, Name, Soname, Email, Gender, DateOfBirth)
+		VALUES (:login, :hash, :name, :soname, :email, :sex, :birth)');
+		if (
+			!$prep_req->execute(array(
+			':login' => $login,
+			':hash' => $my_hash,
+			':name' => $name,
+			':soname' => $soname,
+			':email' => $email,
+			':sex' => $sex,
+			':birth' => $birthday,))
+			)
 		{
 			return false;
 		}

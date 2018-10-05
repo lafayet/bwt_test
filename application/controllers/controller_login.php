@@ -70,8 +70,7 @@ class Controller_Login extends Controller
 		else
 		{
 			$data["login_status"] = "registering";
-			$this->view->generate('view_login.php', 'view_template.php', $data);
 		}
-		
+		$this->view->generate('view_login.php', 'view_template.php', $data);		
 	}	
 }

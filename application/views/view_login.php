@@ -11,6 +11,10 @@
 	</div>
 	<div class = "row login-page-greeting" align = "center">
 		<div class="col-md-12">
+			<?php if(isset($register_status))
+			{if ($register_status=="wrong_credentials") { ?>
+			<p style="color:red">Данные введены неправильно! Попробуйте еще.</p>
+			<?php }} ?>
 			<?php if($login_status=="access_denied") { ?>
 			<p style="color:red">Логин и/или пароль введены неверно.</p>
 			<?php } ?>
