@@ -1,6 +1,6 @@
 <?php
 
-class MController {
+class MController extends Controller {
 	
 	public $model;
 	public $view;
@@ -16,9 +16,5 @@ class MController {
 		{
 			header('Location:/bwt_test/login/');
 		}
-	}
-	
-	function action_index()
-	{
 	}
 }

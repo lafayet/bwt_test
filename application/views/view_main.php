@@ -27,5 +27,11 @@
 			</ul>
 		</div>	
 	</div>	
+	<div class = "row logout">
+		<div class="col-md-12">
+			<br>
+			<a href="http:\\localhost\bwt_test\main\logout">ВЫХОД</a>
+		</div>	
+	</div>	
 <br>
 </div>

@@ -20,4 +20,10 @@ class Controller {
 	function action_index()
 	{
 	}
+	
+	function action_logout()
+	{
+		session_destroy();
+		header('Location:/bwt_test/login/');
+	}
 }
