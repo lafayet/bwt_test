@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2018 at 03:19 PM
+-- Generation Time: Oct 05, 2018 at 01:23 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -45,6 +45,28 @@ INSERT INTO `feedbacks` (`Id`, `UserId`, `Message`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `feedbacks2`
+--
+
+CREATE TABLE `feedbacks2` (
+  `Id` int(11) NOT NULL,
+  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `message` varchar(500) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `feedbacks2`
+--
+
+INSERT INTO `feedbacks2` (`Id`, `name`, `email`, `message`) VALUES
+(1, 'Кот', 'ihavelapki@ds.com', ' У меня лапки'),
+(2, 'Пес', 'pes@mail.gav', 'А я тебя съем! '),
+(3, 'Лев', 'preria@africa.com', 'Поговорите мне тут! Всех в угол поставлю! ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -65,7 +87,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`Id`, `Login`, `PasswordHash`, `Name`, `Soname`, `Email`, `Gender`, `DateOfBirth`) VALUES
 (1, 'Admin', '$2y$10$SkAqZWOse2RjfpYUBvrUOOOdQhn4VGMOLlk1koN.SHshjeMa21Cvu', 'Di', 'Metri', 'di.metri@gmail.com', 'm', '1993-02-08'),
-(2, 'Tester', '$2y$10$SFF8YCKHTet7klLKCtgPfe.YBucfp.CtDSFNnZCjHTVe6meL1S7MS', 'Тостер', 'Хлостер', 'biba@byak.com', 'm', '2018-07-11');
+(2, 'Tester', '$2y$10$SFF8YCKHTet7klLKCtgPfe.YBucfp.CtDSFNnZCjHTVe6meL1S7MS', 'Тостер', 'Хлостер', 'biba@byak.com', 'm', '2018-07-11'),
+(4, 'Krolik', '$2y$10$wmsf6DrQP4mW5ewcyDyesuX8c5sjmsLPycxosw.gZrR6l2B/MAq3S', 'Багс', 'Банни', 'bugs@rabbit.com', '', '0000-00-00'),
+(5, 'Timoo', '$2y$10$9YLD3OywC9GgmBPQg8GgJO778ebUTta2pvDG5rholEcxPRHMIJlU2', 'Тимка', 'Лол', '', '', '0000-00-00'),
+(6, 'Homyak', '$2y$10$dc5esxiTBEyYPidWPI30HugnkOBU/aHrFI4cr77J2pCOTaqgylAc6', 'Хома', 'Большиещеки', 'nomail@fig.vam', '', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -77,6 +102,12 @@ INSERT INTO `users` (`Id`, `Login`, `PasswordHash`, `Name`, `Soname`, `Email`, `
 ALTER TABLE `feedbacks`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `FOREIGN` (`UserId`);
+
+--
+-- Indexes for table `feedbacks2`
+--
+ALTER TABLE `feedbacks2`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `users`
@@ -96,10 +127,16 @@ ALTER TABLE `feedbacks`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Feedback Id', AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `feedbacks2`
+--
+ALTER TABLE `feedbacks2`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Account id', AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Account id', AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
