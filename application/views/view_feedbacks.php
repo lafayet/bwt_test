@@ -19,4 +19,11 @@
 			</table>
 		</div>
 	</div>
+	<div class = "row back">
+		<div class="col-md-12">
+			<br>
+			<a href="\bwt_test\main">Назад</a><br>
+			<br>
+		</div>	
+	</div>	
 </div>

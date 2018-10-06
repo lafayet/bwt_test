@@ -19,7 +19,7 @@
 			<p style="color:red">Логин и/или пароль введены неверно.</p>
 			<?php } ?>
 			Здравствуйте, Гость! <br>
-			<a href="http:\\localhost\bwt_test\login">Войдите</a>, или <a href="http:\\localhost\bwt_test\login\register">зарегистрируйтесь</a>.
+			<a href="\bwt_test\login">Войдите</a>, или <a href="\bwt_test\login\register">зарегистрируйтесь</a>.
 		</div>	
 	</div>	
 <?php if($login_status=="logging_in") { ?>
@@ -30,10 +30,10 @@
 				Введите ваши логин и пароль: <br>
 				<br>
 				Логин: <br>
-				<input type="text" name="login"><br>
+				<input type="text" name="login" minlength="3" maxlength="20" required pattern="[A-Za-z0-9_]{3,20}" /><br>
 				<br>
 				Пароль: <br>
-				<input type="password" name="password"><br>
+				<input type="password" name="password" minlength="3" maxlength="20" required pattern="[^';\x22]{3,20}"/><br>
 				<br>
 				<input type="submit" value="Войти" name="btn"
 				style="width: 150px; height: 30px;">
@@ -49,22 +49,23 @@
 				Для регистрации заполните следующие поля:<br>
 				<br>
 				Логин:* <br>
-				<input type="text" name="login"> <br>
+				<input type="text" name="login" minlength="3" maxlength="20" required pattern="[0-9A-Za-z_]{3,20}" title = "Допустимые символы: A-Z, a-z, 0-9, подчеркивание."/> <br>
 				<br>
 				Пароль:* <br>
-				<input type="password" name="password"> <br>
+				<input type="password" name="password" minlength="3" maxlength="20" required pattern="[^';\x22]{3,20}" title = "Допустимые символы: все кроме ; и кавычек."/> <br>
 				<br>
 				Имя:* <br>
-				<input type="text" name="name"> <br>
+				<input type="text" name="name" minlength="3" maxlength="20" required pattern="[А-ЯЁЄ-ЯҐ][А-яЁёЄ-ЯҐа-їґ]{3,20}" title = "Только кириллица, с заглавной буквы."/> <br>
 				<br>
 				Фамилия:* <br>
-				<input type="text" name="soname"> <br>
+				<input type="text" name="soname" minlength="3" maxlength="20" required pattern="[А-ЯЁЄ-ЯҐ][А-яЁёЄ-ЯҐа-їґ]{3,20}" title = "Только кириллица, с заглавной буквы." /> <br>
 				<br>
 				E-Mail:* <br>
-				<input type="email" name="email"> <br>
+				<input type="email" name="email" minlength="8" maxlength="30" required pattern="[^';\x22]{3,20}" title = "Допустимые символы: все кроме ; и кавычек." /> <br>
 				<br>
 				Пол: <br>
-				<input type="text" name="sex"> <br>
+				<input type="radio" name="sex" value="m"> Мужской<br>
+				<input type="radio" name="sex" value="f"> Женский<br>
 				<br>
 				День рождения: <br>
 				<input type="date" name="birthday"> <br>
