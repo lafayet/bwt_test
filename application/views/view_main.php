@@ -21,16 +21,16 @@
 		<div class="col-md-12">
 			<br>
 			<ul>
-				<li><a href="http:\\localhost\bwt_test\weather">Просмотреть погоду</a></li>
-				<li><a href="http:\\localhost\bwt_test\feedbacks">Просмотреть отзывы</a></li>
-				<li><a href="http:\\localhost\bwt_test\feedback">Оставить отзыв</a></li>
+				<li><a href="\bwt_test\weather">Просмотреть погоду</a></li>
+				<li><a href="\bwt_test\feedbacks">Просмотреть отзывы</a></li>
+				<li><a href="\bwt_test\feedback">Оставить отзыв</a></li>
 			</ul>
 		</div>	
 	</div>	
 	<div class = "row logout">
 		<div class="col-md-12">
 			<br>
-			<a href="http:\\localhost\bwt_test\main\logout">ВЫХОД</a>
+			<a href="\bwt_test\main\logout">ВЫХОД</a>
 		</div>	
 	</div>	
 <br>
