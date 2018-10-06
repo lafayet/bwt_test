@@ -12,6 +12,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/bwt_test/libs/bootstrap/js/bootstrap.min.js"></script>
 	<link href="/bwt_test/css/dopstyle.css" rel="stylesheet">
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 	<?php include 'application/views/'.$content_view; ?>
