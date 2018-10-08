@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2018 at 01:23 PM
+-- Generation Time: Oct 08, 2018 at 01:44 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -29,18 +29,35 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `feedbacks` (
-  `Id` int(11) NOT NULL COMMENT 'Feedback Id',
-  `UserId` int(11) NOT NULL COMMENT 'Id of user which this feedback is',
-  `Message` varchar(500) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Feedback message'
+  `Id` int(11) NOT NULL,
+  `Name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Message` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `UserId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `feedbacks`
 --
 
-INSERT INTO `feedbacks` (`Id`, `UserId`, `Message`) VALUES
-(1, 2, 'Вместо погоды показывают  какую-то фигню...'),
-(2, 2, 'А что, админы не отвечают?');
+INSERT INTO `feedbacks` (`Id`, `Name`, `Email`, `Message`, `UserId`) VALUES
+(1, 'Di', 'di.metri@gmail.com', 'Test', 1),
+(3, 'Тостер', 'biba@byak.com', 'Абырвалг', 2),
+(4, 'Di', 'di.metri@gmail.com', 'А мне не нужно вводить мыло', 1),
+(5, 'Лось', 'los@forest.com', 'Если туго вам пришлось...', 3);
+
+--
+-- Triggers `feedbacks`
+--
+DELIMITER $$
+CREATE TRIGGER `newFeedback` BEFORE INSERT ON `feedbacks` FOR EACH ROW BEGIN
+If new.UserId != '2' THEN 
+	SET new.Name = (SELECT users.Name FROM users WHERE Id = new.UserId);
+    SET new.Email = (SELECT users.Email FROM users WHERE Id = new.UserId);
+END if;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -71,14 +88,14 @@ INSERT INTO `feedbacks2` (`Id`, `name`, `email`, `message`) VALUES
 --
 
 CREATE TABLE `users` (
-  `Id` int(11) NOT NULL COMMENT 'Account id',
-  `Login` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Id` int(11) NOT NULL,
+  `Login` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `PasswordHash` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `Name` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User name',
-  `Soname` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User soname',
-  `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User e-mail',
-  `Gender` char(1) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'User gender',
-  `DateOfBirth` date DEFAULT NULL COMMENT 'User date of birth'
+  `Name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Soname` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Gender` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DateOfBirth` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -86,11 +103,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Id`, `Login`, `PasswordHash`, `Name`, `Soname`, `Email`, `Gender`, `DateOfBirth`) VALUES
-(1, 'Admin', '$2y$10$SkAqZWOse2RjfpYUBvrUOOOdQhn4VGMOLlk1koN.SHshjeMa21Cvu', 'Di', 'Metri', 'di.metri@gmail.com', 'm', '1993-02-08'),
-(2, 'Tester', '$2y$10$SFF8YCKHTet7klLKCtgPfe.YBucfp.CtDSFNnZCjHTVe6meL1S7MS', 'Тостер', 'Хлостер', 'biba@byak.com', 'm', '2018-07-11'),
-(4, 'Krolik', '$2y$10$wmsf6DrQP4mW5ewcyDyesuX8c5sjmsLPycxosw.gZrR6l2B/MAq3S', 'Багс', 'Банни', 'bugs@rabbit.com', '', '0000-00-00'),
-(5, 'Timoo', '$2y$10$9YLD3OywC9GgmBPQg8GgJO778ebUTta2pvDG5rholEcxPRHMIJlU2', 'Тимка', 'Лол', '', '', '0000-00-00'),
-(6, 'Homyak', '$2y$10$dc5esxiTBEyYPidWPI30HugnkOBU/aHrFI4cr77J2pCOTaqgylAc6', 'Хома', 'Большиещеки', 'nomail@fig.vam', '', '0000-00-00');
+
+(1, 'Admin', '$2y$10$SkAqZWOse2RjfpYUBvrUOOOdQhn4VGMOLlk1koN.SHshjeMa21Cvu', 'Di', 'Metri', 'di.metri@gmail.com', 'm', '1991-10-09'),
+(2, 'Guest', '-', 'Guest', '-', '-', NULL, NULL),
+(3, 'Superlos', '$2y$10$zsFlF9HCjZCfF/u7Wbr01.wKf4//Jte5L6MeU39y1.urb9ZDqD.hK', 'Лось', 'Излесу', 'los@forest.com', NULL, '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -113,8 +129,7 @@ ALTER TABLE `feedbacks2`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`Id`),
-  ADD UNIQUE KEY `Login` (`Login`);
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -124,7 +139,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Feedback Id', AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `feedbacks2`
@@ -136,7 +151,8 @@ ALTER TABLE `feedbacks2`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Account id', AUTO_INCREMENT=7;
+
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

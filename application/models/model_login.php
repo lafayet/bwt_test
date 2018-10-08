@@ -10,11 +10,16 @@ class Model_Login extends Model
 		$prep_req->execute();
 		$my_hash = $prep_req->fetchColumn();
 		
-		
 		if (password_verify ($password , $my_hash))
 		{
 			session_start();
-			$_SESSION['uid'] = $login;
+			$pdo->query('SET NAMES UTF8');
+			$prep_req = $pdo->prepare('SELECT id, name FROM users WHERE login = :login');
+			$prep_req->bindParam(':login', $login);
+			$prep_req->execute();
+			$res = $prep_req->fetchAll();
+			$_SESSION['uid'] = $res[0][0];
+			$_SESSION['name'] = $res[0][1];
 			return true;
 		}
 		else

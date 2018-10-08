@@ -38,7 +38,7 @@ class Controller_Login extends Controller
 	
 	function action_register()
 	{
-		if(isset($_POST['login']) && isset($_POST['password']))
+		if(isset($_POST['login']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['soname']) && isset($_POST['email']))
 		{
 			$login = $_POST['login'];
 			$password = $_POST['password'];
@@ -47,8 +47,11 @@ class Controller_Login extends Controller
 			$sex = $_POST['sex'];
 			$birthday = $_POST['birthday'];
 			$email = $_POST['email'];
+			$ok = Validate::isLenghtValid($login, 20) && Validate::isLenghtValid($password, 20) 
+				&& Validate::isLenghtValid($name, 30) && Validate::isLenghtValid(soname, 20)
+				&& Validate::isLenghtValid($email, 30);
 			
-			if($login!="" && $password!="")
+			if($ok)
 			{
 				
 				if (!$this->model->register($login, $password, $name, $soname, $email, $sex, $birthday, $email))

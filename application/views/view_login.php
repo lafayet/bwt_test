@@ -38,6 +38,7 @@
 				<input type="submit" value="Войти" name="btn"
 				style="width: 150px; height: 30px;">
 			</form>
+			<br/><a href="\bwt_test\feedback">Оставить отзыв</a>
 		</div>
 	</div>
 <?php } ?>
@@ -73,6 +74,7 @@
 				<input type="submit" value="Зарегистрироваться" name="btn"
 				style="width: 150px; height: 30px;">
 			</form>
+			<br/><a href="\bwt_test\feedback">Оставить отзыв</a>
 		</div>
 	</div>
 <?php } ?>

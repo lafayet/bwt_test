@@ -7,6 +7,7 @@
 	<div class = "row feedbacks" align = "center">
 		<div class="col-md-12">
 			<table align="center" border="1" >
+			<tr><td>Имя пользователя</td><td>Отзыв</td></tr>
 			<?php
 			$i = 0;
 				while (isset($data[$i]))
