@@ -62,6 +62,28 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `feedbacks2`
+--
+
+CREATE TABLE `feedbacks2` (
+  `Id` int(11) NOT NULL,
+  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `message` varchar(500) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `feedbacks2`
+--
+
+INSERT INTO `feedbacks2` (`Id`, `name`, `email`, `message`) VALUES
+(1, 'Кот', 'ihavelapki@ds.com', ' У меня лапки'),
+(2, 'Пес', 'pes@mail.gav', 'А я тебя съем! '),
+(3, 'Лев', 'preria@africa.com', 'Поговорите мне тут! Всех в угол поставлю! ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -81,6 +103,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Id`, `Login`, `PasswordHash`, `Name`, `Soname`, `Email`, `Gender`, `DateOfBirth`) VALUES
+
 (1, 'Admin', '$2y$10$SkAqZWOse2RjfpYUBvrUOOOdQhn4VGMOLlk1koN.SHshjeMa21Cvu', 'Di', 'Metri', 'di.metri@gmail.com', 'm', '1991-10-09'),
 (2, 'Guest', '-', 'Guest', '-', '-', NULL, NULL),
 (3, 'Superlos', '$2y$10$zsFlF9HCjZCfF/u7Wbr01.wKf4//Jte5L6MeU39y1.urb9ZDqD.hK', 'Лось', 'Излесу', 'los@forest.com', NULL, '0000-00-00');
@@ -95,6 +118,12 @@ INSERT INTO `users` (`Id`, `Login`, `PasswordHash`, `Name`, `Soname`, `Email`, `
 ALTER TABLE `feedbacks`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `FOREIGN` (`UserId`);
+
+--
+-- Indexes for table `feedbacks2`
+--
+ALTER TABLE `feedbacks2`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `users`
@@ -113,9 +142,16 @@ ALTER TABLE `feedbacks`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `feedbacks2`
+--
+ALTER TABLE `feedbacks2`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
