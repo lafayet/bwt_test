@@ -2,10 +2,10 @@
 
 class Validate
 {
-	public static function isNameValid($name)
+	public static function isLenghtValid($name, $lenght)
 	{
 		$len = strlen($name);
-		if (($len >= 3) and ($len <= 20))
+		if (($len >= 3) and ($len <= $lenght))
 		{
 			return true;
 		}
