@@ -10,11 +10,13 @@ class Model_Login extends Model
 		$prep_req->execute();
 		$my_hash = $prep_req->fetchColumn();
 		
-		
 		if (password_verify ($password , $my_hash))
 		{
 			session_start();
-			$_SESSION['uid'] = $login;
+			$prep_req = $pdo->prepare('SELECT id FROM users WHERE login = :login');
+			$prep_req->bindParam(':login', $login);
+			$prep_req->execute();
+			$_SESSION['uid'] = $prep_req->fetchColumn();
 			return true;
 		}
 		else
