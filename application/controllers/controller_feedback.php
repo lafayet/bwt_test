@@ -31,7 +31,7 @@ class Controller_Feedback extends MController
 		else
 		{
 			$data['hide'] = false;
-			if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['feedback']))
+			if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['feedback']) && Validate::isNameValid($_POST['name']))
 			{
 				if ($this->model->set_data($_POST['name'], $_POST['email'], $_POST['feedback'], $_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR'], 2))
 				{

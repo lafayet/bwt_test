@@ -11,10 +11,7 @@
 	</div>
 	<div class = "row login-page-greeting" align = "center">
 		<div class="col-md-12">
-			<?php if($login_status=="access_granted") { ?>
-			<p style="color:green">Авторизация прошла успешно.</p>
-			<?php } ?>
-			Здравствуйте, Гость! <br>
+			Здравствуйте, <?php echo ($name); ?>! <br>
 		</div>	
 	</div>	
 	<div class = "row login-page-navigation">
