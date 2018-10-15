@@ -1,6 +1,8 @@
 <?php
 
-namespace BwtTest\Core;
+namespace BwtTest\Controllers;
+
+use BwtTest\Views\View;
 
 class Controller 
 {
@@ -21,7 +23,7 @@ class Controller
     {
     }
     
-    function action_logout()
+    public function actionLogout()
     {
         session_destroy();
         header('Location:/bwt_test/login/');

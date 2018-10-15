@@ -1,6 +1,8 @@
 <?php
 
-namespace BwtTest\Core;
+namespace BwtTest\Controllers;
+
+use BwtTest\Models\Model;
 
 class MController extends Controller 
 {

@@ -15,6 +15,6 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
-    <?php include 'application/views/'.$content_view; ?>
+    <?php include 'vendor/dmitry/src/BwtTest/Views/'.$content_view; ?>
 </body>
 </html>

@@ -2,13 +2,16 @@
 
 namespace BwtTest\Controllers;
 
+use BwtTest\Views\View;
+use BwtTest\Models\ModelLogin;
+
 class ControllerLogin extends Controller
 {
     public function __construct()
     {
         session_start();
         if (!isset($_SESSION['uid'])) {
-            $this->model = new Model_Login();
+            $this->model = new ModelLogin();
             $this->view = new View();
         } else {
             header('Location:/bwt_test/main/');
@@ -28,7 +31,7 @@ class ControllerLogin extends Controller
             $data["login_status"] = "logging_in";
         }
         
-        $this->view->generate('view_login.php', 'view_template.php', $data);
+        $this->view->generate('ViewLogin.php', 'ViewTemplate.php', $data);
     }
     
     public function actionRegister()
@@ -59,6 +62,6 @@ class ControllerLogin extends Controller
         } else {
             $data["login_status"] = "registering";
         }
-        $this->view->generate('view_login.php', 'view_template.php', $data);
+        $this->view->generate('viewLogin.php', 'viewTemplate.php', $data);
     }    
 }

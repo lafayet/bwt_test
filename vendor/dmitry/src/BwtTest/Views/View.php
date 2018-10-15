@@ -1,6 +1,6 @@
 <?php 
 
-namespace BwtTest\Core;
+namespace BwtTest\Views;
 
 class View
 {
@@ -15,6 +15,6 @@ class View
         }
         */
         
-        include 'application/views/'.$template_view;
+        include 'vendor/dmitry/src/BwtTest/Views/'.$template_view;
     }
 }

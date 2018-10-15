@@ -2,7 +2,7 @@
 
 namespace BwtTest\Models;
 
-use BwtTest\Core\Model;
+use PDO;
 
 class ModelLogin extends Model
 {
