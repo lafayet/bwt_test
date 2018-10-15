@@ -5,9 +5,9 @@ namespace BwtTest\Models;
 use GuzzleHttp\Client;
 use PHPHtmlParser\Dom;
 
-class Model_Weather extends Model
+class ModelWeather extends Model
 {
-    public function get_data()
+    public function getData()
     {    
         //init $data
         $data['cloudness'] = "Нет данных с gismeteo.ua, ";

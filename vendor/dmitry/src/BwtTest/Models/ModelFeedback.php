@@ -3,6 +3,7 @@
 namespace BwtTest\Models;
 
 use ReCaptcha\ReCaptcha;
+use PDO;
 
 class ModelFeedback extends Model
 {

@@ -3,15 +3,14 @@
 namespace BwtTest\Controllers;
 
 use BwtTest\Views\View;
-use BwtTest\Models\ModelLogin;
 
 class ControllerLogin extends Controller
 {
-    public function __construct()
+    public function __construct($model)
     {
         session_start();
         if (!isset($_SESSION['uid'])) {
-            $this->model = new ModelLogin();
+            $this->model = $model;
             $this->view = new View();
         } else {
             header('Location:/bwt_test/main/');

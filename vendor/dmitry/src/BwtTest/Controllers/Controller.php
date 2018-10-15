@@ -9,10 +9,11 @@ class Controller
     public $model;
     public $view;
     
-    public function __construct()
+    public function __construct($model)
     {
         session_start();
         if (isset($_SESSION['uid'])) {
+            $this->model = $model;
             $this->view = new View();
         } else {
             header('Location:/bwt_test/login/');

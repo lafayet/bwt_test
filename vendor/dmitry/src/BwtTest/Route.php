@@ -27,8 +27,12 @@ class Route
         $controller_name = 'BwtTest\Controllers\Controller'.ucfirst($controller_name);
         $action_name = 'action'.ucfirst($action_name);
         
+        $model = null;
         // создаем контроллер
-        $controller = new $controller_name($model_name);
+        if (class_exists($model_name)){
+            $model = new $model_name;
+        }
+        $controller = new $controller_name($model);        
 
         if (method_exists($controller, $action_name)) {
             // вызываем действие контроллера

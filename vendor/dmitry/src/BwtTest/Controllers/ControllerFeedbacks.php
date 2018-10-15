@@ -2,11 +2,11 @@
 
 namespace BwtTest\Controllers;
 
-class ControllerFeedbacks extends MController
+class ControllerFeedbacks extends Controller
 {
     public function actionIndex()
     {
-        $data = $this->model->get_data();
-        $this->view->generate('view_feedbacks.php', 'view_template.php', $data);
+        $data = $this->model->getData();
+        $this->view->generate('ViewFeedbacks.php', 'ViewTemplate.php', $data);
     }
 }

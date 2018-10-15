@@ -2,17 +2,19 @@
 
 namespace BwtTest\Controllers;
 
-class ControllerFeedback extends MController
+use BwtTest\Views\View;
+
+class ControllerFeedback extends Controller
 {
 
     public function __construct($model_class)
     {
         session_start();
-        $this->model = new $model_class();
+        $this->model = $model_class;
         $this->view = new View();
     }
     
-    public function action_index()
+    public function actionIndex()
     {
         $data['hide'] = false;
         if (isset($_SESSION['uid'])) {
@@ -38,6 +40,6 @@ class ControllerFeedback extends MController
                 }
             }
         }    
-        $this->view->generate('view_feedback.php', 'view_template.php', $data);
+        $this->view->generate('ViewFeedback.php', 'ViewTemplate.php', $data);
     }
 }
