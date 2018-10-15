@@ -1,0 +1,21 @@
+.border-container{
+    border:1px solid black;
+}
+
+.col-md-12 {
+    text-align: center;
+}
+
+.login-page-navigation ul{
+    padding-left:0;
+    margin-bottom:0;
+}
+.login-page-navigation li{
+    display:inline-block;
+    margin-left:10px;
+    padding:3px 10px;
+}
+
+.feedbacks td{
+    padding: 10px;
+}
