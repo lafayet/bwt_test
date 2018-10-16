@@ -3,6 +3,7 @@
 namespace BwtTest\Controllers;
 
 use BwtTest\Views\View;
+use BwtTest\Validate;
 
 class ControllerLogin extends Controller
 {
@@ -35,7 +36,10 @@ class ControllerLogin extends Controller
     
     public function actionRegister()
     {
-        if (isset($_POST['login']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['soname']) && isset($_POST['email'])) {
+        if (isset($_POST['login']) && isset($_POST['password']) &&
+            isset($_POST['name']) && isset($_POST['soname']) && 
+            isset($_POST['email'])) {
+            
             $login = $_POST['login'];
             $password = $_POST['password'];
             $name = $_POST['name'];
@@ -43,8 +47,10 @@ class ControllerLogin extends Controller
             $sex = $_POST['sex'];
             $birthday = $_POST['birthday'];
             $email = $_POST['email'];
-            $ok = Validate::isLenghtValid($login, 20) && Validate::isLenghtValid($password, 20) 
-                && Validate::isLenghtValid($name, 30) && Validate::isLenghtValid(soname, 20)
+            $ok = Validate::isLenghtValid($login, 20)
+                && Validate::isLenghtValid($password, 20)
+                && Validate::isLenghtValid($name, 30)
+                && Validate::isLenghtValid(soname, 20)
                 && Validate::isLenghtValid($email, 30);
             
             if($ok) {                
@@ -61,6 +67,6 @@ class ControllerLogin extends Controller
         } else {
             $data["login_status"] = "registering";
         }
-        $this->view->generate('viewLogin.php', 'viewTemplate.php', $data);
-    }    
+        $this->view->generate('ViewLogin.php', 'ViewTemplate.php', $data);
+    }
 }

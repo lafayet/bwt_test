@@ -8,7 +8,7 @@ use PHPHtmlParser\Dom;
 class ModelWeather extends Model
 {
     public function getData()
-    {    
+    {
         //init $data
         $data['cloudness'] = "Нет данных с gismeteo.ua, ";
         $data['cloudness_w'] = "попробуйте обновить страницу.";

@@ -32,8 +32,9 @@ class Route
         if (class_exists($model_name)){
             $model = new $model_name;
         }
-        $controller = new $controller_name($model);        
-
+        if (class_exists($controller_name)){
+            $controller = new $controller_name($model); 
+        }
         if (method_exists($controller, $action_name)) {
             // вызываем действие контроллера
             $controller->$action_name();
@@ -43,7 +44,7 @@ class Route
         }    
     }
     
-    function errorPage404()
+    private function errorPage404()
     {
         $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
         header('HTTP/1.1 404 Not Found');

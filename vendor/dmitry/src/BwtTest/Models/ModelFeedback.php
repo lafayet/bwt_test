@@ -3,12 +3,11 @@
 namespace BwtTest\Models;
 
 use ReCaptcha\ReCaptcha;
-use PDO;
 
 class ModelFeedback extends Model
 {
     public function setData($name, $email, $feedback, $reCaptchaResp, $serv, $uid)
-    {    
+    {
         
         //секретный ключ
         $secret = "6LepuHMUAAAAAHhTEoccdmCYGaUgcO0fGDXNJIti";

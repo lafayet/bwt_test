@@ -4,7 +4,7 @@ namespace BwtTest\Controllers;
 
 use BwtTest\Views\View;
 
-class Controller 
+class Controller
 {
     public $model;
     public $view;

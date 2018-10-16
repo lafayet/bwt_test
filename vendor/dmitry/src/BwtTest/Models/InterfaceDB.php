@@ -12,7 +12,7 @@ class InterfaceDB
         $pdo = new PDO('mysql:host='.$ini['DBHost'].';dbname='.$ini['DBName'], $ini['DBLogin'], $ini['DBPassword']);
         $pdo->query('SET NAMES UTF8');
         return $pdo;
-    }        
+    }
     
     public static function queryPasswordHashFromLogin($login)
     {

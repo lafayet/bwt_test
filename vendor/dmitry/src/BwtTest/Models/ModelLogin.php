@@ -2,16 +2,13 @@
 
 namespace BwtTest\Models;
 
-use PDO;
-
 class ModelLogin extends Model
 {
     public function login($login, $password)
     {
-        $my_hash = InterfaceDB::queryPasswordHashFromLogin($login);        
+        $my_hash = InterfaceDB::queryPasswordHashFromLogin($login);
         if (password_verify ($password , $my_hash)) {
-            session_start();
-            $res = InterfaceDB::queryIdNameFromLogin($login); 
+            $res = InterfaceDB::queryIdNameFromLogin($login);
             $_SESSION['uid'] = $res[0][0];
             $_SESSION['name'] = $res[0][1];
             return true;
