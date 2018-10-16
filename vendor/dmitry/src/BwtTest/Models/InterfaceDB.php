@@ -8,7 +8,8 @@ class InterfaceDB
 {
     private static function connect()
     {
-        $pdo = new PDO('mysql:host=localhost;dbname=bwt_test_db', 'root', '');
+        $ini = parse_ini_file(realpath('vendor/dmitry/db_config.ini')); 
+        $pdo = new PDO('mysql:host='.$ini['DBHost'].';dbname='.$ini['DBName'], $ini['DBLogin'], $ini['DBPassword']);
         $pdo->query('SET NAMES UTF8');
         return $pdo;
     }        
