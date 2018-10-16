@@ -22,21 +22,7 @@ class ModelFeedback extends Model
         }
         
         if ($response != null && $response->isSuccess()) {
-            $pdo = new PDO('mysql:host=localhost;dbname=bwt_test_db', 'root', '');
-            $pdo->query('SET NAMES UTF8');
-            $prep_req = $pdo->prepare('INSERT INTO feedbacks (name, email, message, userid)
-            VALUES (:name, :email, :message, :uid)');
-            if (
-                !$prep_req->execute(array(
-                ':name' => $name,
-                ':email' => $email,
-                ':message' => $feedback,
-                ':uid' => $uid))
-                ) {
-                return false;
-            } else {
-                return true;
-            }
+            return InterfaceDB::createNewFeedback($name, $email, $feedback, $uid);
         } else {
             return false;
         }
