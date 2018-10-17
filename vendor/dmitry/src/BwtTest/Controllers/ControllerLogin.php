@@ -52,7 +52,7 @@ class ControllerLogin extends Controller
             $ok = Validate::isLenghtValid($login, 20)
                 && Validate::isLenghtValid($password, 20)
                 && Validate::isLenghtValid($name, 30)
-                && Validate::isLenghtValid(soname, 20)
+                && Validate::isLenghtValid($soname, 20)
                 && Validate::isLenghtValid($email, 30);
             
             if ($ok) {                
