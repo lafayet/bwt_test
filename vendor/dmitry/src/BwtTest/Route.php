@@ -6,29 +6,29 @@ class Route
 {
     public static function start()
     {
-        // контроллер и действие по умолчанию
+        // default controller and action
         $controller_name = 'Login';
         $action_name = 'Index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         
-        // получаем имя контроллера
+        //getting controller name from requested url
         if (!empty($routes[2]) && $routes[2] != 'index.php') {    
             $controller_name = $routes[2];
         }
         
-        // получаем имя экшена
+        //getting action name from requested url
         if (!empty($routes[3])) {
             $action_name = $routes[3];
         }
 
-        // добавляем префиксы
+        //adding prefixes
         $model_name = 'BwtTest\Models\Model'.ucfirst($controller_name);
         $controller_name = 'BwtTest\Controllers\Controller'.ucfirst($controller_name);
         $action_name = 'action'.ucfirst($action_name);
         
+        // creating model
         $model = null;
-        // создаем контроллер
         if (class_exists($model_name)){
             $model = new $model_name;
         }
