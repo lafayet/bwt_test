@@ -20,8 +20,7 @@ class ModelWeather extends Model
         try {
             $res = $client->request('GET', 'https://www.gismeteo.ua/weather-zaporizhia-5093/', [
                 'headers' => ['User-Agent' => 'testing/1.0',
-                              'Accept'     => 'text/html']]
-            );
+                              'Accept'     => 'text/html']]);
             if ($res->getStatusCode() == 200) {
                 //parsing page
                 $site_html = (string)$res->getBody();

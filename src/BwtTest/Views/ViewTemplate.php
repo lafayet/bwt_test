@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap -->
-    <link href="/bwt_test/vendor/dmitry/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bwt_test/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/bwt_test/vendor/dmitry/bootstrap/js/bootstrap.min.js"></script>
-    <link href="/bwt_test/vendor/dmitry/css/dopstyle.css" rel="stylesheet">
+    <script src="/bwt_test/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/bwt_test/css/dopstyle.css" rel="stylesheet">
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
-    <?php include 'vendor/dmitry/src/BwtTest/Views/'.$content_view; ?>
+    <?php include 'src/BwtTest/Views/'.$content_view; ?>
 </body>
 </html>

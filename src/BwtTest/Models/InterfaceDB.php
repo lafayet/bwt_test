@@ -56,8 +56,7 @@ class InterfaceDB
             users (Login, PasswordHash, Name, Soname, Email, Gender, DateOfBirth)
             VALUES (:login, :hash, :name, :soname, :email, :sex, :birth)'
         );
-        if (
-            !$prep_req->execute(array(
+        if (!$prep_req->execute(array(
             ':login' => $login,
             ':hash' => $password_hash,
             ':name' => $name,
@@ -80,8 +79,7 @@ class InterfaceDB
             feedbacks (name, email, message, userid)
             VALUES (:name, :email, :message, :uid)'
         );
-        if (
-            !$prep_req->execute(array(
+        if (!$prep_req->execute(array(
             ':name' => $name,
             ':email' => $email,
             ':message' => $feedback,

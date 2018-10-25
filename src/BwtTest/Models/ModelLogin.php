@@ -7,7 +7,7 @@ class ModelLogin extends Model
     public function login($login, $password)
     {
         $my_hash = InterfaceDB::queryPasswordHashFromLogin($login);
-        if (password_verify ($password , $my_hash)) {
+        if (password_verify($password, $my_hash)) {
             $res = InterfaceDB::queryIdNameFromLogin($login);
             $_SESSION['uid'] = $res[0][0];
             $_SESSION['name'] = $res[0][1];

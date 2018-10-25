@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace BwtTest\Views;
 
@@ -6,7 +6,7 @@ class View
 {
     //public $template_view; // здесь можно указать общий вид по умолчанию.
     
-    function generate($content_view, $template_view, $data = null)
+    public function generate($content_view, $template_view, $data = null)
     {
         /*
         if(is_array($data)) {
@@ -15,6 +15,6 @@ class View
         }
         */
         
-        include 'vendor/dmitry/src/BwtTest/Views/'.$template_view;
+        include 'src/BwtTest/Views/'.$template_view;
     }
 }

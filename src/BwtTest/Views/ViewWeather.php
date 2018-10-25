@@ -13,5 +13,5 @@
             echo '<a href="/bwt_test/main">Вернуться</a><br><br>';
         ?>
         </div>
-    </row>
+    </div>
 </div>

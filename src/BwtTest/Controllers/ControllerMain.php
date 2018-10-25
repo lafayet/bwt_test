@@ -2,7 +2,7 @@
 
 namespace BwtTest\Controllers;
 
-class ControllerMain extends Controller 
+class ControllerMain extends Controller
 {
     public function actionIndex()
     {

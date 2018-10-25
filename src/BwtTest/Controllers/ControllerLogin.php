@@ -20,8 +20,7 @@ class ControllerLogin extends Controller
     
     public function actionIndex()
     {
-        if(isset($_POST['login']) && isset($_POST['password']))
-        {
+        if (isset($_POST['login']) && isset($_POST['password'])) {
             if ($this->model->login($_POST['login'], $_POST['password'])) {
                 header('Location:/bwt_test/main/');
             } else {
@@ -36,11 +35,10 @@ class ControllerLogin extends Controller
     
     public function actionRegister()
     {
-        if (
-            isset($_POST['login']) && isset($_POST['password']) &&
-            isset($_POST['name']) && isset($_POST['soname']) && 
+        if (isset($_POST['login']) && isset($_POST['password']) &&
+            isset($_POST['name']) && isset($_POST['soname']) &&
             isset($_POST['email'])
-        ) {            
+        ) {
             $login = $_POST['login'];
             $password = $_POST['password'];
             $name = $_POST['name'];
@@ -55,17 +53,16 @@ class ControllerLogin extends Controller
                 && Validate::isLenghtValid($soname, 20)
                 && Validate::isLenghtValid($email, 30);
             
-            if ($ok) {                
-                if (
-                    !$this->model->register(
-                        $login,
-                        $password,
-                        $name,
-                        $soname,
-                        $email,
-                        $sex,
-                        $birthday,
-                        $email
+            if ($ok) {
+                if (!$this->model->register(
+                    $login,
+                    $password,
+                    $name,
+                    $soname,
+                    $email,
+                    $sex,
+                    $birthday,
+                    $email
                 )) {
                     echo "User already exists!";
                     echo '<a href="http://localhost/bwt_test/login/register">Назад</a>';

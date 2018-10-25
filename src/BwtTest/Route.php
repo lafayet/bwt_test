@@ -13,7 +13,7 @@ class Route
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         
         //getting controller name from requested url
-        if (!empty($routes[2]) && $routes[2] != 'index.php') {    
+        if (!empty($routes[2]) && $routes[2] != 'index.php') {
             $controller_name = $routes[2];
         }
         
@@ -29,11 +29,11 @@ class Route
         
         // creating model
         $model = null;
-        if (class_exists($model_name)){
+        if (class_exists($model_name)) {
             $model = new $model_name;
         }
-        if (class_exists($controller_name)){
-            $controller = new $controller_name($model); 
+        if (class_exists($controller_name)) {
+            $controller = new $controller_name($model);
         }
         if (method_exists($controller, $action_name)) {
             // вызываем действие контроллера
@@ -41,7 +41,7 @@ class Route
         } else {
             // здесь также разумнее было бы кинуть исключение
             Route::errorPage404();
-        }    
+        }
     }
     
     private function errorPage404()
