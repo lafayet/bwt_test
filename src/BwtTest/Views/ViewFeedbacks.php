@@ -10,12 +10,10 @@
             <tr><td>Имя пользователя</td><td>Отзыв</td></tr>
             <?php
             $i = 0;
-                while (isset($data[$i]))
-                {
-                    
+            while (isset($data[$i])) {
                     echo '<tr><td> '.$data[$i][0].'</td><td> '.$data[$i][1].' </td></tr>';
                     $i++;
-                }
+            }
             ?>
             </table>
         </div>

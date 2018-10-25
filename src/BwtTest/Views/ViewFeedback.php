@@ -27,10 +27,12 @@ function checkCaptcha() {
                 <br>
                 <?php if ($data['hide'] == false) { ?>
                 Ваше имя:* <br/>
-                <input type="text" name="name" minlength="2" maxlength="20" required pattern="[А-ЯЁЄ-ЯҐ][А-яЁёЄ-ЯҐа-їґ]{3,20}" title = "Только кириллица, с заглавной буквы."/><br/>
+                <input type="text" name="name" minlength="2" maxlength="20" required pattern="[А-ЯЁЄ-ЯҐ][А-яЁёЄ-ЯҐа-їґ]{3,20}"
+                       title = "Только кириллица, с заглавной буквы."/><br/>
                 <br/>
                 E-Mail:* <br/>
-                <input type="email" name="email" minlength="2" maxlength="20" required pattern="[^';\x22]{3,20}" title = "Допустимые символы: все кроме ; и кавычек."/> <br/>
+                <input type="email" name="email" minlength="2" maxlength="20" required pattern="[^';\x22]{3,20}"
+                       title = "Допустимые символы: все кроме ; и кавычек."/> <br/>
                 <br/>
                 <?php }?>
                 Отзыв:* <br/>
