@@ -3,6 +3,7 @@
 namespace BwtTest\Models;
 
 use ReCaptcha\ReCaptcha;
+use BwtTest\Core\InterfaceDB;
 
 class ModelFeedback extends \BwtTest\Core\Model
 {
@@ -22,7 +23,7 @@ class ModelFeedback extends \BwtTest\Core\Model
         }
         
         if ($response != null && $response->isSuccess()) {
-            $IntDB = \BwtTest\Core\InterfaceDB::getInstance();
+            $IntDB = InterfaceDB::getInstance();
             return $IntDB->createNewFeedback($name, $email, $feedback, $uid);
         } else {
             return false;
