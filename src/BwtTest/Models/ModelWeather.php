@@ -47,7 +47,7 @@ class ModelWeather extends \BwtTest\Core\Model
                 $data['temperature'] = $temperature;
                 $data['weather'] = $weather;
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             //if no data -> do nothing
         }
         return $data;

@@ -4,14 +4,15 @@ namespace BwtTest\Controllers;
 
 use BwtTest\Core\View;
 use BwtTest\Core\Validate;
+use BwtTest\Models\ModelFeedback;
 
 class ControllerFeedback extends \BwtTest\Core\Controller
 {
 
-    public function __construct($model_class)
+    public function __construct()
     {
         session_start();
-        $this->model = $model_class;
+        $this->model = new ModelFeedback();
         $this->view = new View();
     }
     

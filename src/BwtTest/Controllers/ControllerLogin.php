@@ -4,14 +4,15 @@ namespace BwtTest\Controllers;
 
 use BwtTest\Core\View;
 use BwtTest\Core\Validate;
+use BwtTest\Models\ModelLogin;
 
 class ControllerLogin extends \BwtTest\Core\Controller
 {
-    public function __construct($model)
+    public function __construct()
     {
         session_start();
         if (!isset($_SESSION['uid'])) {
-            $this->model = $model;
+            $this->model = new ModelLogin();
             $this->view = new View();
         } else {
             header('Location:/bwt_test/main/');
@@ -61,8 +62,7 @@ class ControllerLogin extends \BwtTest\Core\Controller
                     $soname,
                     $email,
                     $sex,
-                    $birthday,
-                    $email
+                    $birthday
                 )) {
                     echo "User already exists!";
                     echo '<a href="http://localhost/bwt_test/login/register">Назад</a>';

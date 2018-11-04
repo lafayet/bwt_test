@@ -29,9 +29,6 @@ class Route
         
         // creating model
         $model = null;
-        if (class_exists($model_name)) {
-            $model = new $model_name;
-        }
         if (class_exists($controller_name)) {
             $controller = new $controller_name($model);
         }

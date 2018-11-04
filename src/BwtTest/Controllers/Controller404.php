@@ -2,6 +2,6 @@
 
 namespace BwtTest\Controllers;
 
-class Controller404 extends Controller
+class Controller404 extends \BwtTest\Core\Controller
 {
 }

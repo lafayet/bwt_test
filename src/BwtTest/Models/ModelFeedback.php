@@ -10,7 +10,8 @@ class ModelFeedback extends \BwtTest\Core\Model
     {
         
         //секретный ключ
-        $secret = "6LepuHMUAAAAAHhTEoccdmCYGaUgcO0fGDXNJIti";
+        $ini = parse_ini_file(realpath('config.ini'));
+        $secret = $ini["KeySrv"];
         //ответ
         $response = null;
         //проверка секретного ключа

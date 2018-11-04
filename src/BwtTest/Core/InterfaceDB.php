@@ -22,7 +22,7 @@ class InterfaceDB
     }
     private function connect()
     {
-        $ini = parse_ini_file(realpath('db_config.ini'));
+        $ini = parse_ini_file(realpath('config.ini'));
         $this->pdo = new PDO(
             'mysql:host='.$ini['DBHost'].';dbname='.$ini['DBName'],
             $ini['DBLogin'],
