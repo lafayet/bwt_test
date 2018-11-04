@@ -2,13 +2,16 @@
 
 namespace BwtTest\Models;
 
-class ModelLogin extends Model
+use BwtTest\Core\InterfaceDB;
+
+class ModelLogin extends \BwtTest\Core\Model
 {
     public function login($login, $password)
     {
-        $my_hash = InterfaceDB::queryPasswordHashFromLogin($login);
+        $IntDB = InterfaceDB::getInstance();
+        $my_hash = $IntDB->queryPasswordHashFromLogin($login);
         if (password_verify($password, $my_hash)) {
-            $res = InterfaceDB::queryIdNameFromLogin($login);
+            $res = $IntDB->queryIdNameFromLogin($login);
             $_SESSION['uid'] = $res[0][0];
             $_SESSION['name'] = $res[0][1];
             return true;
@@ -20,6 +23,7 @@ class ModelLogin extends Model
     public function register($login, $password, $name, $soname, $email, $sex = "NULL", $birthday = "NULL")
     {
         $my_hash = password_hash($password, PASSWORD_DEFAULT);
-        return InterfaceDB::createNewUser($login, $my_hash, $name, $soname, $email, $sex, $birthday);
+        $IntDB = InterfaceDB::getInstance();
+        return $IntDB->createNewUser($login, $my_hash, $name, $soname, $email, $sex, $birthday);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace BwtTest\Views;
+namespace BwtTest\Core;
 
 class View
 {

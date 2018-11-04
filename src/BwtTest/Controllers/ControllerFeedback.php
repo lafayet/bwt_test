@@ -2,10 +2,10 @@
 
 namespace BwtTest\Controllers;
 
-use BwtTest\Views\View;
-use BwtTest\Validate;
+use BwtTest\Core\View;
+use BwtTest\Core\Validate;
 
-class ControllerFeedback extends Controller
+class ControllerFeedback extends \BwtTest\Core\Controller
 {
 
     public function __construct($model_class)

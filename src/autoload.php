@@ -31,4 +31,4 @@ spl_autoload_register(function ($class) {
     }
 });
 
-BwtTest\Route::start(); // starting router
+BwtTest\Core\Route::start(); // starting router

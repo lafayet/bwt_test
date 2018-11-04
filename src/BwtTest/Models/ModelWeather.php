@@ -5,7 +5,7 @@ namespace BwtTest\Models;
 use GuzzleHttp\Client;
 use PHPHtmlParser\Dom;
 
-class ModelWeather extends Model
+class ModelWeather extends \BwtTest\Core\Model
 {
     public function getData()
     {

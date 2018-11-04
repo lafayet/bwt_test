@@ -1,8 +1,8 @@
 <?php
 
-namespace BwtTest\Controllers;
+namespace BwtTest\Core;
 
-use BwtTest\Views\View;
+use BwtTest\Core\View;
 
 class Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace BwtTest\Models;
+namespace BwtTest\Core;
 
 class Model
 {

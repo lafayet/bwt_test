@@ -2,10 +2,11 @@
 
 namespace BwtTest\Models;
 
-class ModelFeedbacks extends Model
+class ModelFeedbacks extends \BwtTest\Core\Model
 {
     public function getData()
     {
-        return InterfaceDB::getFeedbacks();
+        $IntDB = \BwtTest\Core\InterfaceDB::getInstance();
+        return $IntDB->getFeedbacks();
     }
 }

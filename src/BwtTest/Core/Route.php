@@ -1,6 +1,6 @@
 <?php
 
-namespace BwtTest;
+namespace BwtTest\Core;
 
 class Route
 {
@@ -44,7 +44,7 @@ class Route
         }
     }
     
-    private function errorPage404()
+    private static function errorPage404()
     {
         $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
         header('HTTP/1.1 404 Not Found');

@@ -1,6 +1,6 @@
 <?php
 
-namespace BwtTest;
+namespace BwtTest\Core;
 
 class Validate
 {

@@ -4,7 +4,7 @@ namespace BwtTest\Models;
 
 use ReCaptcha\ReCaptcha;
 
-class ModelFeedback extends Model
+class ModelFeedback extends \BwtTest\Core\Model
 {
     public function setData($name, $email, $feedback, $reCaptchaResp, $serv, $uid)
     {
@@ -21,7 +21,8 @@ class ModelFeedback extends Model
         }
         
         if ($response != null && $response->isSuccess()) {
-            return InterfaceDB::createNewFeedback($name, $email, $feedback, $uid);
+            $IntDB = \BwtTest\Core\InterfaceDB::getInstance();
+            return $IntDB->createNewFeedback($name, $email, $feedback, $uid);
         } else {
             return false;
         }

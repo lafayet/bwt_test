@@ -2,7 +2,7 @@
 
 namespace BwtTest\Controllers;
 
-class ControllerWeather extends Controller
+class ControllerWeather extends \BwtTest\Core\Controller
 {
     public function actionIndex()
     {
